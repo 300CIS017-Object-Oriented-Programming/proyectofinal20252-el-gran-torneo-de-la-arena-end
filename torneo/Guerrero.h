@@ -2,16 +2,15 @@
 #define GUERRERO_H
 
 #include "Personaje.h"
-#include <string>
 
-class Guerrero : public Personaje {
+class Guerrero :
+public Personaje {
 private:
-    int contadorGolpes;   // Necesario para críticos sin rand()
+    int contadorGolpes;
 
 public:
-    Guerrero(std::string nom);
+    Guerrero(string nom);
     void accion(Personaje* objetivo);
 };
 
 #endif
-
