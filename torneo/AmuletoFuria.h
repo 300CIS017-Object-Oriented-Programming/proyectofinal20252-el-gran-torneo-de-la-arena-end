@@ -1,13 +1,14 @@
-//
-// Created by ASUS FX506HC on 21/11/2025.
-//
+#ifndef AMULETOFURIA_H
+#define AMULETOFURIA_H
 
-#ifndef PROYECTOFINAL20252_EL_GRAN_TORNEO_DE_LA_ARENA_END_AMULETOFURIA_H
-#define PROYECTOFINAL20252_EL_GRAN_TORNEO_DE_LA_ARENA_END_AMULETOFURIA_H
+#include "ObjetoMagico.h"
+#include "Personaje.h"
+#include <cstdlib>
 
-
-class AmuletoFuria {
+class AmuletoFuria : public ObjetoMagico {
+public:
+    AmuletoFuria();
+    void aplicarEfecto(Personaje* objetivo);
 };
 
-
-#endif //PROYECTOFINAL20252_EL_GRAN_TORNEO_DE_LA_ARENA_END_AMULETOFURIA_H
+#endif

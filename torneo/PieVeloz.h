@@ -1,13 +1,13 @@
-//
-// Created by ASUS FX506HC on 21/11/2025.
-//
+#ifndef PIESVELOCES_H
+#define PIESVELOCES_H
 
-#ifndef PROYECTOFINAL20252_EL_GRAN_TORNEO_DE_LA_ARENA_END_PIEVELOZ_H
-#define PROYECTOFINAL20252_EL_GRAN_TORNEO_DE_LA_ARENA_END_PIEVELOZ_H
+#include "ObjetoMagico.h"
+#include "Personaje.h"
 
-
-class PieVeloz {
+class PiesVeloces : public ObjetoMagico {
+public:
+    PiesVeloces();
+    void aplicarEfecto(Personaje* objetivo);
 };
 
-
-#endif //PROYECTOFINAL20252_EL_GRAN_TORNEO_DE_LA_ARENA_END_PIEVELOZ_H
+#endif

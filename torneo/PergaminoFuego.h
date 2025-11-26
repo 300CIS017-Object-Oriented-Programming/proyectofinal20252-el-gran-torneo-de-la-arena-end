@@ -1,13 +1,14 @@
-//
-// Created by ASUS FX506HC on 21/11/2025.
-//
+#ifndef PERGAMINOFUEGO_H
+#define PERGAMINOFUEGO_H
 
-#ifndef PROYECTOFINAL20252_EL_GRAN_TORNEO_DE_LA_ARENA_END_PERGAMINOFUEGO_H
-#define PROYECTOFINAL20252_EL_GRAN_TORNEO_DE_LA_ARENA_END_PERGAMINOFUEGO_H
+#include "ObjetoMagico.h"
+#include "Personaje.h"
+#include <cstdlib>
 
-
-class PergaminoFuego {
+class PergaminoFuego : public ObjetoMagico {
+public:
+    PergaminoFuego();
+    void aplicarEfecto(Personaje* objetivo);
 };
 
-
-#endif //PROYECTOFINAL20252_EL_GRAN_TORNEO_DE_LA_ARENA_END_PERGAMINOFUEGO_H
+#endif

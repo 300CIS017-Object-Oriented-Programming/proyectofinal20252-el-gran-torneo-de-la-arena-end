@@ -1,13 +1,14 @@
-//
-// Created by ASUS FX506HC on 21/11/2025.
-//
+#ifndef POCIONVIDA_H
+#define POCIONVIDA_H
 
-#ifndef PROYECTOFINAL20252_EL_GRAN_TORNEO_DE_LA_ARENA_END_POCIONVIDA_H
-#define PROYECTOFINAL20252_EL_GRAN_TORNEO_DE_LA_ARENA_END_POCIONVIDA_H
+#include "ObjetoMagico.h"
+#include "Personaje.h"
+#include <cstdlib>
 
-
-class PocionVida {
+class PocionVida : public ObjetoMagico {
+public:
+    PocionVida();
+    void aplicarEfecto(Personaje* objetivo);
 };
 
-
-#endif //PROYECTOFINAL20252_EL_GRAN_TORNEO_DE_LA_ARENA_END_POCIONVIDA_H
+#endif
