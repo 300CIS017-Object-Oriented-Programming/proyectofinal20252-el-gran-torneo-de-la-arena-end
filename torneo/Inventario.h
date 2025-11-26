@@ -1,13 +1,26 @@
-//
-// Created by ASUS FX506HC on 21/11/2025.
-//
+#ifndef INVENTARIO_H
+#define INVENTARIO_H
 
-#ifndef PROYECTOFINAL20252_EL_GRAN_TORNEO_DE_LA_ARENA_END_INVENTARIO_H
-#define PROYECTOFINAL20252_EL_GRAN_TORNEO_DE_LA_ARENA_END_INVENTARIO_H
+#include "ObjetoMagico.h"
+#include <unordered_map>
+#include <string>
+#include <iostream>
 
+using namespace std;
 
 class Inventario {
+private:
+    unordered_map<string, int> objetos;  // Almacena tipo y cantidad
+    
+public:
+    Inventario();
+    
+    void agregarObjeto(string tipo, int cantidad);
+    bool hayObjeto(string tipo);
+    void retirarObjeto(string tipo);
+    void mostrarInventario();
+    int getStock(string tipo);
+    ObjetoMagico* crearObjeto(string tipo);
 };
 
-
-#endif //PROYECTOFINAL20252_EL_GRAN_TORNEO_DE_LA_ARENA_END_INVENTARIO_H
+#endif
