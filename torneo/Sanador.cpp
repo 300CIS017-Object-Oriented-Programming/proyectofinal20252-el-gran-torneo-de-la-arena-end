@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Sanador::Sanador(string nom) : Personaje(nom, 90, 10, 10, "Sanador") {}
+Sanador::Sanador(string nom) : Personaje(nom, 90, 20, 10, "Sanador") {}
 
 void Sanador::accion(Personaje* objetivo) {
     cout << nombre << " cura a " << objetivo->getNombre() << endl;
@@ -12,5 +12,4 @@ void Sanador::accion(Personaje* objetivo) {
 
     cout << "  Recupera " << curacion << " puntos de vida. Vida actual: "
          << objetivo->getVida() << endl;
-}
 }
