@@ -1,207 +1,226 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/Wv2uUvIt)
-# proyecto_paradaise
-Proyecto curso programación orientada a objetos.
-Este proyecto implementa un sistema de combate por turnos entre dos Guilds en C++, utilizando programación orientada a objetos.
-El jugador controla una Guild con tres héroes, cada uno con un rol distinto, y antes de pelear puede asignarles objetos mágicos desde un Inventario Global.
+📌 Descripción del Proyecto
 
-Durante el combate, el sistema ejecuta automáticamente los turnos de ataque, aplicando los daños, curaciones o efectos especiales según la clase del personaje y los objetos que posea.
+Este proyecto implementa un sistema de combate por turnos inspirado en un entorno de fantasía llamado Lyrenhold.
+El jugador controla una Guild de héroes (Guerrero, Mago, Sanador) y se enfrenta a una Guild enemiga mediante un sistema de combate automático.
 
- Funcionamiento General del Programa
+El juego incluye:
 
-El programa se organiza en cuatro partes principales:
+Manejo de personajes y roles
 
-1 Personajes
+Atributos (vida, ataque, defensa)
 
-Todos los personajes heredan de la clase base Personaje, que define:
+Objetos mágicos consumibles
 
-Vida
+Inventario global
 
-Ataque
+Asignación de objetos a los héroes
 
-Defensa
+Sistema de turnos
 
-Rol
+Guardado y lectura del inventario en JSON
 
-Inventario personal (máximo 2 objetos)
+Todo desarrollado en C++ usando POO.
 
-Clases derivadas:
+🎮 Características Principales
+✔ 1. Personajes y Roles
 
-Guerrero → genera golpe crítico cada 3 ataques
+El proyecto usa herencia para crear distintos tipos de personajes:
 
-Mago → lanza hechizos con daño aleatorio
+Guerrero
 
-Sanador → cura a un aliado entre 20 y 39
+Ataques fuertes
 
-Oponente → enemigos con variación de daño
+Golpe crítico cada 3 turnos
 
-Cada uno sobreescribe el método accion().
+Mago
 
-2️ Objetos Mágicos
+Daño mágico aleatorio
 
-Todos heredan de ObjetoMagico y tienen su propio efecto al aplicarse:
+Sanador
 
-PocionVida → Cura entre 20 y 40
+Cura a aliados
 
-AmuletoFuria → (aumenta ataque — según implementación)
+Además, los enemigos se crean usando la clase Oponente.
 
-EscudoBendito → Aumenta defensa entre 10 y 20
+✔ 2. Objetos Mágicos
 
-VaritaHelada → Reduce el ataque del enemigo entre 5 y 15
+Cada objeto hereda de ObjetoMagico e implementa:
 
-PiesVeloces → Aumenta defensa en +50
+void aplicarEfecto(Personaje* objetivo);
 
-PergaminoFuego → Daño mágico entre 20 y 35
 
-Estos efectos modifican las estadísticas del personaje objetivo.
+Objetos incluidos:
 
-3️ Inventario Global
+Pocion de Vida
 
-El inventario se gestiona mediante un unordered_map<string, int>, donde se almacena la cantidad disponible de cada objeto.
+Amuleto de Furia
 
-Funciones principales:
+Escudo Bendito
 
-agregarObjeto()
+Varita Helada
 
-retirarObjeto()
+Pies Veloces
 
-getStock()
+Pergamino de Fuego
 
-hayObjeto()
+Cada objeto modifica vida, ataque o defensa según su propósito.
 
-mostrarInventario()
+✔ 3. Inventario Global
 
-crearObjeto() → Devuelve un objeto mágico según su nombre
+El inventario almacena cantidades de cada objeto:
 
-El inventario inicia así:
+unordered_map<string, int>
 
-Objeto	Cantidad
-Pocion	2
-Amuleto	1
-Escudo	2
-Varita	1
-Pies	2
-Pergamino	1
-4️ Guilds
 
-La clase Guild administra:
-
-Nombre del equipo
-
-Vector de personajes
-
-Contador de cuántos siguen vivos
-
-Permite:
-
-Agregar héroes
-
-Ver sus estados
-
-Obtener lista de personajes
-
-Contar los que están vivos
-
-5️ Sistema de Combate – Clase Arena
-
-Arena recibe la Guild del jugador y la Guild enemiga.
-
-iniciarCombate() realiza:
-
-Turno de los héroes
-
-Turno de los enemigos
-
-Verificar derrotados
-
-Repetir hasta que una Guild pierda
-
-Muestra:
-
-Quién gana
-
-Número de turnos totales
-
- Flujo del Programa (main.cpp)
-
-El main hace lo siguiente:
-
-Crea la Guild del jugador:
-
-Guerrero: Arthos
-
-Mago: Lyra
-
-Sanador: Elara
-
-Crea la Guild enemiga:
-
-Dravos
-
-Selene
-
-Inicializa el inventario global
-
-Muestra un menú con opciones:
-
-Ver héroes
+El jugador puede:
 
 Ver inventario
 
-Asignar objeto
+Agregar o retirar objetos
 
-Iniciar combate
+Crear objetos dinámicamente
 
-Salir
+Asignarlos a un héroe
 
-Cuando se asigna un objeto:
-Se revisa el stock
-Se descuenta del inventario
-Se crea el objeto
-Se agrega al héroe por nombre
-Cuando se inicia el combate:
-Se crea una Arena
-El combate se ejecuta automáticamente
-Se elimina la arena al terminar
-Finalmente, el programa libera memoria con delete.
- Estructura Real de Tu Proyecto
-Arena.h / Arena.cpp
-Guild.h / Guild.cpp
-Personaje.h / Personaje.cpp
-Guerrero.h / Guerrero.cpp
-Mago.h / Mago.cpp
-Sanador.h / Sanador.cpp
-Oponente.h / Oponente.cpp
+✔ 4. Guardado en JSON
 
-ObjetoMagico.h / ObjetoMagico.cpp
-PocionVida.h / PocionVida.cpp
-AmuletoFuria.h / AmuletoFuria.cpp
-EscudoBendito.h / EscudoBendito.cpp
-VaritaHelada.h / VaritaHelada.cpp
-PiesVeloces.h / PiesVeloces.cpp
-PergaminoFuego.h / PergaminoFuego.cpp
+La clase Inventario guarda su contenido en:
 
-InventarioGlobal.h / InventarioGlobal.cpp
-
-main.cpp
-
-Compilación
-
-Usando g++:
-
-g++ *.cpp -o lyrenhold
+inventario.json
 
 
-Ejecutar:
+Ejemplo:
 
-./lyrenhold
+{
+"Pocion": 2,
+"Amuleto": 1,
+"Escudo": 2,
+"Varita": 1,
+"Pies": 2,
+"Pergamino": 1
+}
 
- Conclusión
 
-Este proyecto implementa un sistema completo de combate con:
-Polimorfismo en ataques y efectos
-Herencia en personajes y objetos
-Encapsulamiento y modularidad
-Manejo de inventarios
-Simulación de batalla automática
-Cumple con todos los requisitos del diseño:
-Guilds, personajes, objetos mágicos, sistema de turnos e interacción mediante menú.
+Esto permite mantener el stock entre ejecuciones.
+
+✔ 5. Combate Automático
+
+La clase Arena controla:
+
+Turnos
+
+Ataques de héroes y enemigos
+
+Comprobación de derrotas
+
+Mensajes de batalla
+
+Declaración del ganador
+
+📂 Estructura del Proyecto
+📁 ProyectoLyrenhold
+│── main.cpp
+│── Arena.h / Arena.cpp
+│── Guild.h / Guild.cpp
+│── Personaje.h / Personaje.cpp
+│── Inventario.h / Inventario.cpp
+│── ObjetoMagico.h
+│── PocionVida.h / PocionVida.cpp
+│── AmuletoFuria.h / AmuletoFuria.cpp
+│── EscudoBendito.h / EscudoBendito.cpp
+│── VaritaHelada.h / VaritaHelada.cpp
+│── PiesVeloces.h / PiesVeloces.cpp
+│── PergaminoFuego.h / PergaminoFuego.cpp
+│── Guerrero.h / Guerrero.cpp
+│── Mago.h / Mago.cpp
+│── Sanador.h / Sanador.cpp
+│── Oponente.h / Oponente.cpp
+│── inventario.json  (archivo generado automáticamente)
+
+▶️ Cómo Ejecutarlo
+
+Compilar el proyecto completo
+
+Ejecutar el programa
+
+Navegar por el menú:
+
+1. Ver héroes
+2. Ver inventario
+3. Asignar objeto
+4. Iniciar combate
+5. Salir
+
+🧪 Demostración del Combate
+
+Los héroes atacan primero
+
+Luego atacan los enemigos
+
+El combate continúa hasta que una guild queda sin personajes vivos
+
+Los efectos de objetos se aplican automáticamente cuando se usan
+
+🧾 Conceptos de POO Utilizados
+🔹 Clases y Objetos
+
+Cada personaje y objeto es una clase independiente.
+
+🔹 Herencia
+
+Mago, Guerrero y Sanador heredan de Personaje
+
+Todos los objetos heredan de ObjetoMagico
+
+🔹 Polimorfismo
+
+El método:
+
+virtual void accion(Personaje* objetivo) = 0;
+
+
+Se ejecuta distinto según cada clase.
+
+🔹 Encapsulamiento
+
+Atributos privados: vida, ataque, defensa.
+
+🔹 Composición
+
+Los personajes tienen un inventario propio (vector).
+
+```mermaid
+classDiagram
+    direction TB
+    
+    %% Clase Base: Personaje
+    class Personaje {
+        - nombre : string
+        - vida : int
+        - ataque : int
+        - defensa : int
+        - rol : string
+        + accion(obj)
+        + recibirDanio()
+        + curar()
+        + mostrarEstado()
+    }
+    
+    %% Subclases: Heredan de Personaje
+    class Guerrero {
+        + accion()
+    }
+    
+    class Mago {
+        + accion()
+    }
+    
+    class Sanador {
+        + accion()
+    }
+
+    %% Definición de Herencia (flecha con triángulo vacío)
+    Personaje <|-- Guerrero : Herencia
+    Personaje <|-- Mago : Herencia
+    Personaje <|-- Sanador : Herencia
+```

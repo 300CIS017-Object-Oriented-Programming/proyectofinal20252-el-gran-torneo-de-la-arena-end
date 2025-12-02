@@ -1,6 +1,6 @@
 #include "Personaje.h"
-#include "ObjetoMagico.h"
 
+// Constructor
 Personaje::Personaje(string nom, int v, int atq, int def, string r) {
     nombre = nom;
     vida = v;
@@ -9,63 +9,37 @@ Personaje::Personaje(string nom, int v, int atq, int def, string r) {
     rol = r;
 }
 
-
-Personaje::~Personaje() {
-    for(int i = 0; i < inventario.size(); i++) {
-        delete inventario[i];
-    }
-}
-
+// Getters
 string Personaje::getNombre() { return nombre; }
 int Personaje::getVida() { return vida; }
+int Personaje::getAtaque() { return ataque; }
+int Personaje::getDefensa() { return defensa; }
 string Personaje::getRol() { return rol; }
-bool Personaje::estaVivo() { return vida > 0; }
 
-int Personaje::getAtaque() {
-    return ataque;
+// Saber si está vivo
+bool Personaje::estaVivo() {
+    return vida > 0;
 }
 
-int Personaje::getDefensa() {
-    return defensa;
-}
-
+// Recibir daño
 void Personaje::recibirDanio(int cantidad) {
     int danioReal = cantidad - defensa;
-    if(danioReal < 0) danioReal = 0;
+    if (danioReal < 0) danioReal = 0; // para que el daño no sea negativo
     vida -= danioReal;
-    if(vida < 0) vida = 0;
+    if (vida < 0) vida = 0;
 }
 
+// Curar vida
 void Personaje::curar(int cantidad) {
     vida += cantidad;
 }
 
-
-void Personaje::modificarAtaque(int cantidad) {
-    ataque += cantidad;
-}
-
-void Personaje::modificarDefensa(int cantidad) {
-    defensa += cantidad;
-}
-
-
-void Personaje::agregarObjeto(ObjetoMagico* objeto) {
-    if(inventario.size() < 2) {
-        inventario.push_back(objeto);
-        cout << "  -> " << nombre << " recibio: " << objeto->getNombre() << endl;
-    } else {
-        cout << "  -> " << nombre << " ya tiene 2 objetos (maximo)" << endl;
-        delete objeto;
-    }
-}
-
-int Personaje::cantidadObjetos() {
-    return inventario.size();
-}
-
+// Mostrar información
 void Personaje::mostrarEstado() {
-    cout << "  - " << nombre << " (" << rol << ") | Vida: " << vida
-         << " | Ataque: " << ataque << " | Defensa: " << defensa
-         << " | Objetos: " << inventario.size() << endl;  // ← MODIFICAR: Mostrar objetos
+    cout << "Nombre: " << nombre
+         << " | Rol: " << rol
+         << " | Vida: " << vida
+         << " | Ataque: " << ataque
+         << " | Defensa: " << defensa
+         << endl;
 }
